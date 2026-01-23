@@ -1,0 +1,578 @@
+/* GymSwap Thermometer Styles */
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f5f3ef;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #475569;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Screen management */
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Landing Screen */
+#landing-screen {
+    text-align: center;
+}
+
+#landing-screen h1 {
+    font-size: 2.5rem;
+    color: #2f5d4a;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+#landing-screen .subtitle {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.primary-btn,
+.secondary-btn,
+.cta-btn {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 44px;
+}
+
+.primary-btn {
+    background: #2f5d4a;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.primary-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.primary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: #2f5d4a;
+    border: 2px solid #2f5d4a;
+    margin-top: 1rem;
+}
+
+.secondary-btn:hover {
+    background: #2f5d4a;
+    color: white;
+}
+
+/* Question Screen */
+#question-screen .container {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #2f5d4a;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.question-counter {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+#question-text {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+/* Options */
+.options-container {
+    margin-bottom: 2rem;
+}
+
+/* Number Input */
+.number-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.number-input-wrapper:focus-within {
+    border-color: #2f5d4a;
+    background: #f0f4f2;
+    box-shadow: 0 2px 8px rgba(47, 93, 74, 0.2);
+}
+
+.input-prefix {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2f5d4a;
+    margin: 0;
+}
+
+.number-input {
+    flex: 1;
+    font-size: 1.5rem;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    color: #333;
+    outline: none;
+    min-height: 44px;
+}
+
+.number-input::placeholder {
+    color: #999;
+    font-size: 1rem;
+}
+
+.number-input::-webkit-inner-spin-button,
+.number-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.number-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 44px;
+}
+
+.option:hover {
+    border-color: #2f5d4a;
+    background: #f0f4f2;
+}
+
+.option input[type="radio"] {
+    margin-right: 12px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    accent-color: #2f5d4a;
+}
+
+.option label {
+    flex: 1;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
+
+.option:has(input:checked) {
+    border-color: #2f5d4a;
+    background: #f0f4f2;
+    box-shadow: 0 2px 8px rgba(47, 93, 74, 0.2);
+}
+
+/* Results Screen */
+#results-screen .container {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#results-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+/* Thermometer */
+.thermometer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    padding: 2rem 0;
+}
+
+.thermometer {
+    position: relative;
+    width: 100px;
+    height: 420px;
+    margin-bottom: 1rem;
+}
+
+.thermometer-tube {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 360px;
+    background: linear-gradient(to top,
+        #ff0000 0%,
+        #ff3300 12.5%,
+        #ff6600 25%,
+        #ff9900 37.5%,
+        #ffcc00 50%,
+        #cccc00 62.5%,
+        #99cc00 75%,
+        #66cc00 87.5%,
+        #00cc00 100%
+    );
+    border: 4px solid #333;
+    border-radius: 25px 25px 0 0;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.thermometer-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: rgba(255, 255, 255, 0.4);
+    transition: height 2s ease-out, background 2s ease-out;
+    border-radius: 0 0 25px 25px;
+}
+
+.thermometer-bulb {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background: #ccc;
+    border-radius: 50%;
+    border: 4px solid #333;
+    transition: background 0.8s ease, box-shadow 0.8s ease;
+    z-index: 10;
+}
+
+.thermometer-markers {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 30px;
+    height: 100%;
+    padding-left: 8px;
+}
+
+.marker {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.marker::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 2px;
+    background: #333;
+    margin-right: 4px;
+}
+
+.marker span {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.marker[data-level="80"] {
+    top: 20%;
+}
+
+.marker[data-level="60"] {
+    top: 40%;
+}
+
+.marker[data-level="40"] {
+    top: 60%;
+}
+
+.marker[data-level="20"] {
+    top: 80%;
+}
+
+.score-label {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.5s ease, color 0.5s ease;
+    margin-top: 1rem;
+}
+
+/* Results Details */
+.results-message {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.cost-breakdown {
+    background: #f0f4f2;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cost-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.cost-label {
+    font-size: 1rem;
+    color: #666;
+}
+
+.cost-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2f5d4a;
+}
+
+.cost-detail {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 0.5rem;
+}
+
+/* CTA Section */
+.cta-box {
+    background: #2f5d4a;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.cta-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+}
+
+.cta-search-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0 !important;
+    opacity: 1 !important;
+}
+
+.cta-search-text strong {
+    font-size: 1.3rem;
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin: 0 4px;
+}
+
+.cta-btn {
+    display: inline-block;
+    background: white;
+    color: #2f5d4a;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #landing-screen h1 {
+        font-size: 2rem;
+    }
+
+    #landing-screen .subtitle {
+        font-size: 1rem;
+    }
+
+    #question-text {
+        font-size: 1.25rem;
+    }
+
+    #results-title {
+        font-size: 1.5rem;
+    }
+
+    .thermometer {
+        width: 80px;
+        height: 360px;
+    }
+
+    .thermometer-tube {
+        width: 40px;
+        height: 300px;
+        bottom: 35px;
+    }
+
+    .thermometer-bulb {
+        width: 60px;
+        height: 60px;
+    }
+
+    .score-label {
+        font-size: 1.5rem;
+    }
+
+    .cost-value {
+        font-size: 1.5rem;
+    }
+
+    .option label {
+        font-size: 0.95rem;
+    }
+
+    #results-screen .container,
+    #question-screen .container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    #landing-screen h1 {
+        font-size: 1.5rem;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .cta-btn {
+        width: 100%;
+        padding: 14px 24px;
+    }
+
+    .thermometer {
+        width: 70px;
+        height: 320px;
+    }
+
+    .thermometer-tube {
+        width: 35px;
+        height: 260px;
+        bottom: 30px;
+    }
+
+    .thermometer-bulb {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cta-box {
+        padding: 1.5rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.primary-btn:focus,
+.secondary-btn:focus,
+.cta-btn:focus,
+.option:focus-within {
+    outline: 3px solid #2f5d4a;
+    outline-offset: 2px;
+}

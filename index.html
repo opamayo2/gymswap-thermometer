@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymSwap Thermometer - Are You Getting Ripped Off?</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Landing Screen -->
+    <div id="landing-screen" class="screen active">
+        <div class="container">
+            <h1>Are You Getting Ripped Off By Your Gym?</h1>
+            <p class="subtitle">Take our quick 5-question quiz to find out if you're wasting money on your gym membership</p>
+            <button id="start-btn" class="primary-btn">Start Quiz</button>
+        </div>
+    </div>
+
+    <!-- Question Screen -->
+    <div id="question-screen" class="screen">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="question-counter"></div>
+            <h2 id="question-text"></h2>
+            <div id="options-container" class="options-container"></div>
+            <button id="next-btn" class="primary-btn" disabled>Next</button>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen">
+        <div class="container">
+            <h2 id="results-title"></h2>
+
+            <!-- Thermometer Container -->
+            <div class="thermometer-container">
+                <div class="thermometer">
+                    <div class="thermometer-tube">
+                        <div class="thermometer-fill"></div>
+                        <div class="thermometer-markers">
+                            <div class="marker" data-level="80"><span>80</span></div>
+                            <div class="marker" data-level="60"><span>60</span></div>
+                            <div class="marker" data-level="40"><span>40</span></div>
+                            <div class="marker" data-level="20"><span>20</span></div>
+                        </div>
+                    </div>
+                    <div class="thermometer-bulb"></div>
+                </div>
+                <div class="score-label">0/100</div>
+            </div>
+
+            <div id="results-details"></div>
+            <div id="cta-section"></div>
+            <button id="retake-btn" class="secondary-btn">Retake Quiz</button>
+        </div>
+    </div>
+
+    <script src="js/questions.js"></script>
+    <script src="js/scoring.js"></script>
+    <script src="js/thermometer.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
