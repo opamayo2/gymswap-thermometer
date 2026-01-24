@@ -122,7 +122,7 @@ function showResults() {
             <div class="cta-box">
                 <h3>There's a Better Way</h3>
                 <p>GymSwap lets you access gyms near you with flexible, pay-as-you-go pricing. No long-term contracts, no wasted money on unused memberships.</p>
-                <p class="cta-search-text">Search for <strong>gymswap.com.au</strong> to join the waitlist</p>
+                <a href="https://gymswap.com.au" target="_blank" class="cta-btn">Join the Waitlist at gymswap.com.au</a>
             </div>
         `;
     } else {
