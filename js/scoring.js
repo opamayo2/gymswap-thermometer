@@ -4,53 +4,53 @@ const SCORING = {
     frequency: {
         weight: 0.50,
         scores: {
-            5: 10,   // 5+ days = good value = low ripoff score
-            4: 20,   // 4 days = decent value
-            3: 50,   // 3 days = borderline
-            2: 75,   // 2 days = getting ripped off
-            1: 90    // 1 day = extreme ripoff
+            5: 20,   // Best case still only 20
+            4: 25,   // 4 days = 25
+            3: 30,   // 3 days = 30
+            2: 35,   // 2 days = 35
+            1: 40    // 1 day = max 40
         }
     },
     cost: {
         weight: 0.25,
         calculate: (weeklyCost, frequency) => {
-            // Simple: weekly cost divided by days per week
+            // Keep scores low
             const costPerVisit = weeklyCost / frequency;
 
-            if (costPerVisit < 5) return 10;   // Under $5 = great value = low ripoff
-            if (costPerVisit < 10) return 25;  // $5-10 = good value
-            if (costPerVisit < 15) return 50;  // $10-15 = average
-            if (costPerVisit < 20) return 75;  // $15-20 = poor value
-            return 90;                         // Over $20 = extreme ripoff
+            if (costPerVisit < 5) return 20;   // Best case
+            if (costPerVisit < 10) return 25;
+            if (costPerVisit < 15) return 30;
+            if (costPerVisit < 20) return 35;
+            return 40;                         // Worst case = 40
         }
     },
     contract: {
         weight: 0.10,
         scores: {
-            'monthly': 10,      // No commitment = good = low ripoff
-            '6month': 30,       // 6-month = some commitment
-            '1year': 60,        // 1-year = less flexible
-            'multiyear': 90     // Multi-year = worst flexibility = high ripoff
+            'monthly': 20,      // Best case
+            '6month': 25,
+            '1year': 30,
+            'multiyear': 35
         }
     },
     facilities: {
         weight: 0.10,
         scores: {
-            'basic': 10,        // Using what you pay for = efficient = low ripoff
-            'classes': 25,      // Classes are good value
-            'premium': 50,      // Premium might be overpaying
-            'training': 25,     // Personal training is valuable
-            'everything': 10    // Using everything = great value = low ripoff
+            'basic': 20,
+            'classes': 25,
+            'premium': 30,
+            'training': 25,
+            'everything': 20
         }
     },
     distance: {
         weight: 0.05,
         scores: {
-            'very-close': 10,   // Under 5 min = convenient = low ripoff
-            'close': 20,        // 5-10 min = still convenient
-            'medium': 40,       // 10-20 min = acceptable
-            'far': 70,          // 20-30 min = inconvenient = higher ripoff
-            'very-far': 90      // Over 30 min = barrier = high ripoff
+            'very-close': 20,
+            'close': 25,
+            'medium': 30,
+            'far': 35,
+            'very-far': 40
         }
     }
 };
@@ -85,37 +85,37 @@ function getScoreCategory(score) {
     // Inverted scale: Higher score = worse value = more need for GymSwap
     if (score >= 70) return {
         level: 'extreme-ripoff',
-        title: "You're Getting MASSIVELY Ripped Off!",
+        title: "You NEED GymSwap!",
         color: '#ff0000',
-        message: 'Your gym membership is costing you way more than it should. You\'re barely using it and paying premium prices.',
+        message: 'Your gym membership is costing you way more than it should. You\'re barely using it and paying premium prices. GymSwap offers flexible pay-as-you-go access so you only pay when you actually go.',
         showCTA: true
     };
     if (score >= 50) return {
         level: 'ripoff',
-        title: "You're Getting Ripped Off",
+        title: "You NEED GymSwap!",
         color: '#ff6600',
-        message: 'You could be getting much better value for your money. Your usage doesn\'t match what you\'re paying.',
+        message: 'You\'re wasting money on your current membership. GymSwap gives you the flexibility to pay only when you use the gym, saving you hundreds per year.',
         showCTA: true
     };
     if (score >= 35) return {
         level: 'borderline',
-        title: "Borderline Value",
+        title: "You NEED GymSwap!",
         color: '#ffcc00',
-        message: 'Your membership is okay, but there\'s definitely room for improvement. You could find better value.',
+        message: 'Your current membership isn\'t working for you. GymSwap lets you access multiple gyms with no long-term contracts and pay-as-you-go pricing.',
         showCTA: true
     };
     if (score >= 20) return {
         level: 'decent',
-        title: "Decent Value",
+        title: "You NEED GymSwap!",
         color: '#99cc00',
-        message: 'Your gym membership is reasonably priced for how often you go, but GymSwap could still save you money with flexible pay-as-you-go options.',
+        message: 'Even with decent value, GymSwap can save you money with flexible access to gyms near you. No contracts, no commitments, just pay when you go.',
         showCTA: true
     };
     return {
         level: 'great',
-        title: "Great Value!",
+        title: "You NEED GymSwap!",
         color: '#00cc00',
-        message: 'You\'re getting excellent value from your gym membership. GymSwap can help you maintain this flexibility when you travel or want to try new gyms.',
+        message: 'You\'re doing great, but GymSwap can give you even more flexibility. Access gyms when you travel, try new locations, and maintain your routine anywhere.',
         showCTA: true
     };
 }
