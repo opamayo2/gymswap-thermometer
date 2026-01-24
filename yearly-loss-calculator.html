@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Waste Calculator - How Much Are You Losing?</title>
+    <link rel="stylesheet" href="css/yearly-loss-calculator.css">
+</head>
+<body>
+    <!-- Landing Screen -->
+    <div id="landing-screen" class="screen active">
+        <div class="container">
+            <h1>How Much Money Are You Wasting On Unused Gym Days?</h1>
+            <p class="subtitle">Calculate how much you're losing by paying for gym days you don't use</p>
+            <button id="start-btn" class="primary-btn">Calculate My Waste</button>
+        </div>
+    </div>
+
+    <!-- Input Screen -->
+    <div id="input-screen" class="screen">
+        <div class="container">
+            <h2>Your Gym Membership Details</h2>
+            <div class="input-form">
+                <div class="form-group">
+                    <label for="membership-cost">How much do you pay for your gym membership?</label>
+                    <div class="billing-options">
+                        <button type="button" class="billing-btn active" data-period="weekly">Weekly</button>
+                        <button type="button" class="billing-btn" data-period="monthly">Monthly</button>
+                        <button type="button" class="billing-btn" data-period="yearly">Yearly</button>
+                    </div>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="membership-cost" placeholder="35.00" min="0" step="0.01">
+                        <span class="input-suffix" id="billing-suffix">/ week</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="actual-visits">How many days per week do you actually go to the gym?</label>
+                    <div class="number-selector">
+                        <button type="button" class="decrement" data-target="actual-visits">-</button>
+                        <input type="number" id="actual-visits" value="2" min="0" max="7" readonly>
+                        <button type="button" class="increment" data-target="actual-visits">+</button>
+                    </div>
+                    <div class="helper-text">days per week</div>
+                </div>
+            </div>
+            <button id="calculate-btn" class="primary-btn">Calculate My Waste</button>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen">
+        <div class="container">
+            <div class="yearly-loss-hero">
+                <div class="loss-label">Money Wasted On Unused Gym Days</div>
+                <div class="loss-amount" id="yearly-loss-display">$0</div>
+                <div class="loss-subtitle">That's how much you're throwing away every year by not using your membership</div>
+            </div>
+
+            <div class="breakdown-section">
+                <h3>How We Calculated This</h3>
+                <div class="breakdown-grid">
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">Your Weekly Cost</div>
+                        <div class="breakdown-value" id="weekly-cost">$0.00</div>
+                        <div class="breakdown-detail">for 7-day access</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">Unused Days Per Week</div>
+                        <div class="breakdown-value" id="skipped-days">0</div>
+                        <div class="breakdown-detail">days you don't go</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">Cost Per Day</div>
+                        <div class="breakdown-value" id="cost-per-day">$0.00</div>
+                        <div class="breakdown-detail">wasted on each unused day</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">Weekly Waste</div>
+                        <div class="breakdown-value" id="weekly-waste">$0.00</div>
+                        <div class="breakdown-detail">every week</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-label">Monthly Waste</div>
+                        <div class="breakdown-value" id="monthly-waste">$0.00</div>
+                        <div class="breakdown-detail">every month</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-section">
+                <h3>What Could You Buy Instead?</h3>
+                <div id="comparison-grid" class="comparison-grid">
+                    <!-- Dynamic comparisons will be inserted here -->
+                </div>
+            </div>
+
+            <div class="projection-section">
+                <h3>Your 5-Year Projection</h3>
+                <div class="projection-chart">
+                    <div class="chart-bars" id="chart-bars">
+                        <!-- Bars will be inserted here -->
+                    </div>
+                    <div class="chart-total">
+                        <div class="chart-total-label">5-Year Total Waste</div>
+                        <div class="chart-total-value" id="five-year-loss">$0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cta-section">
+                <div class="cta-box">
+                    <h3>Stop Wasting Money On Unused Gym Days</h3>
+                    <p>GymSwap lets you pay only for the days you actually use the gym. No more throwing money away on unused memberships.</p>
+                    <a href="https://gymswap.com.au" target="_blank" class="cta-btn">Join the Waitlist at gymswap.com.au</a>
+                </div>
+            </div>
+
+            <button id="recalculate-btn" class="secondary-btn">Recalculate</button>
+        </div>
+    </div>
+
+    <script src="js/yearly-loss-calculator.js"></script>
+</body>
+</html>
