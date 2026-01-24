@@ -4,53 +4,53 @@ const SCORING = {
     frequency: {
         weight: 0.50,
         scores: {
-            5: 20,   // Best case still only 20
-            4: 25,   // 4 days = 25
-            3: 30,   // 3 days = 30
-            2: 35,   // 2 days = 35
-            1: 40    // 1 day = max 40
+            5: 5,    // Even best case = 5 (displays as 95!)
+            4: 8,    // 4 days = 8 (displays as 92)
+            3: 12,   // 3 days = 12 (displays as 88)
+            2: 15,   // 2 days = 15 (displays as 85)
+            1: 18    // 1 day = 18 (displays as 82)
         }
     },
     cost: {
         weight: 0.25,
         calculate: (weeklyCost, frequency) => {
-            // Keep scores low
+            // Super harsh - everyone gets terrible scores
             const costPerVisit = weeklyCost / frequency;
 
-            if (costPerVisit < 5) return 20;   // Best case
-            if (costPerVisit < 10) return 25;
-            if (costPerVisit < 15) return 30;
-            if (costPerVisit < 20) return 35;
-            return 40;                         // Worst case = 40
+            if (costPerVisit < 5) return 5;    // Best case = 5
+            if (costPerVisit < 10) return 8;
+            if (costPerVisit < 15) return 12;
+            if (costPerVisit < 20) return 15;
+            return 18;                         // Worst case = 18
         }
     },
     contract: {
         weight: 0.10,
         scores: {
-            'monthly': 20,      // Best case
-            '6month': 25,
-            '1year': 30,
-            'multiyear': 35
+            'monthly': 5,       // Best case
+            '6month': 8,
+            '1year': 12,
+            'multiyear': 15
         }
     },
     facilities: {
         weight: 0.10,
         scores: {
-            'basic': 20,
-            'classes': 25,
-            'premium': 30,
-            'training': 25,
-            'everything': 20
+            'basic': 5,
+            'classes': 8,
+            'premium': 12,
+            'training': 8,
+            'everything': 5
         }
     },
     distance: {
         weight: 0.05,
         scores: {
-            'very-close': 20,
-            'close': 25,
-            'medium': 30,
-            'far': 35,
-            'very-far': 40
+            'very-close': 5,
+            'close': 8,
+            'medium': 12,
+            'far': 15,
+            'very-far': 18
         }
     }
 };
